@@ -47,7 +47,7 @@
 				<uap:SplashScreen Image="Images\SplashScreen.png" />
 			</uap:VisualElements>
 			<Extensions>
-				<uap3:Extension Category="windows.appExecutionAlias" EntryPoint="$targetentrypoint$">
+				<uap3:Extension Category="windows.appExecutionAlias" Executable="$targetnametoken$.exe" EntryPoint="$targetentrypoint$">
 					<uap3:AppExecutionAlias>
 						<desktop:ExecutionAlias Alias="hello-app-installer" />
 					</uap3:AppExecutionAlias>
