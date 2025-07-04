@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "happinst", "happinst\happinst.vcxproj", "{34E71418-0B3E-497E-8769-3AEF3A55C779}"
+EndProject
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "hello-app-installer", "msix\hello-app-installer.wapproj", "{07122B8B-727C-487D-9703-FD4B5CD8E0E6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34E71418-0B3E-497E-8769-3AEF3A55C779}.Debug|ARM64.ActiveCfg = Debug|x64
+		{34E71418-0B3E-497E-8769-3AEF3A55C779}.Debug|ARM64.Build.0 = Debug|x64
+		{34E71418-0B3E-497E-8769-3AEF3A55C779}.Debug|x64.ActiveCfg = Debug|x64
+		{34E71418-0B3E-497E-8769-3AEF3A55C779}.Debug|x64.Build.0 = Debug|x64
+		{34E71418-0B3E-497E-8769-3AEF3A55C779}.Release|ARM64.ActiveCfg = Release|x64
+		{34E71418-0B3E-497E-8769-3AEF3A55C779}.Release|ARM64.Build.0 = Release|x64
+		{34E71418-0B3E-497E-8769-3AEF3A55C779}.Release|x64.ActiveCfg = Release|x64
+		{34E71418-0B3E-497E-8769-3AEF3A55C779}.Release|x64.Build.0 = Release|x64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Debug|ARM64.Build.0 = Debug|ARM64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Debug|ARM64.Deploy.0 = Debug|ARM64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Debug|x64.ActiveCfg = Debug|x64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Debug|x64.Build.0 = Debug|x64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Debug|x64.Deploy.0 = Debug|x64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Release|ARM64.ActiveCfg = Release|ARM64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Release|ARM64.Build.0 = Release|ARM64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Release|ARM64.Deploy.0 = Release|ARM64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Release|x64.ActiveCfg = Release|x64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Release|x64.Build.0 = Release|x64
+		{07122B8B-727C-487D-9703-FD4B5CD8E0E6}.Release|x64.Deploy.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F0F1B39-46ED-49EB-8299-FA92B2412910}
+	EndGlobalSection
+EndGlobal
