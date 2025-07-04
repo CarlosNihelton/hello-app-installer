@@ -30,3 +30,14 @@
 *.exe
 *.out
 *.app
+
+AppPackages/
+.vs/
+x64/
+ARM64/
+packages/
+obj/
+*.filters
+*.user
+*.cache
+BundleArtifacts/
