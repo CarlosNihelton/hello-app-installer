@@ -7,7 +7,8 @@
   xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows/10/3"
   xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
   xmlns:uap18="http://schemas.microsoft.com/appx/manifest/uap/windows10/18"
-  IgnorableNamespaces="desktop uap uap3 rescap uap18">
+  xmlns:uap13="http://schemas.microsoft.com/appx/manifest/uap/windows/10/13"
+  IgnorableNamespaces="desktop uap uap3 rescap uap18 uap13">
 
 	<Identity
 	  Name="hello-app-installer"
@@ -18,6 +19,9 @@
 		<DisplayName>Hello App Installer</DisplayName>
 		<PublisherDisplayName>Carlos Nihelton</PublisherDisplayName>
 		<Logo>Images\StoreLogo.png</Logo>
+		<uap13:AutoUpdate>
+			<uap13:AppInstaller File="hello-app-installer.appinstaller" />
+		</uap13:AutoUpdate>
 	</Properties>
 
 	<Dependencies>

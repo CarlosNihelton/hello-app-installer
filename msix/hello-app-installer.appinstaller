@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AppInstaller
+	Uri="https://github.com/CarlosNihelton/hello-app-installer/releases/latest/download/hello-app-installer.appinstaller"
+	Version="1.0.0.0" xmlns="http://schemas.microsoft.com/appx/appinstaller/2018">
+	<MainBundle
+		Name="hello-app-installer"
+		Version="1.0.0.0"
+		Publisher="CN=User"
+		Uri="https://github.com/CarlosNihelton/hello-app-installer/releases/latest/download/hello-app-installer.msixbundle" />
+	<Dependencies>
+		<Package
+		  Name="Microsoft.VCLibs.140.00.UWPDesktop"
+		  Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
+		  Version="14.0.33728.0"
+	  ProcessorArchitecture="x64"
+		  Uri="https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx" />
+		<Package
+		  Name="Microsoft.VCLibs.140.00.UWPDesktop"
+		  Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
+		  Version="14.0.33728.0"
+	  ProcessorArchitecture="arm"
+		  Uri="https://aka.ms/Microsoft.VCLibs.arm64.14.00.Desktop.appx" />
+	</Dependencies>
+	<UpdateSettings>
+		<OnLaunch
+			HoursBetweenUpdateChecks="0" />
+			<ForceUpdateFromAnyVersion>true</ForceUpdateFromAnyVersion>
+	</UpdateSettings>
+</AppInstaller>
