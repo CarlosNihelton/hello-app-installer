@@ -4,10 +4,11 @@
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
   xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
   xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
-  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows/10/3"
-  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  xmlns:uap3="http://schemas.microsoft.com/appx/manifest/uap/windows10/3"
+  xmlns:uap13="http://schemas.microsoft.com/appx/manifest/uap/windows10/13"
   xmlns:uap18="http://schemas.microsoft.com/appx/manifest/uap/windows10/18"
-  IgnorableNamespaces="desktop uap uap3 rescap uap18">
+  xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
+  IgnorableNamespaces="desktop uap uap3 uap13 uap18 rescap">
 
 	<Identity
 	  Name="hello-app-installer"
@@ -18,11 +19,14 @@
 		<DisplayName>Hello App Installer</DisplayName>
 		<PublisherDisplayName>Carlos Nihelton</PublisherDisplayName>
 		<Logo>Images\StoreLogo.png</Logo>
+		<uap13:AutoUpdate>
+			<uap13:AppInstaller File="hello-app-installer.appinstaller" />
+		</uap13:AutoUpdate>
 	</Properties>
 
 	<Dependencies>
 		<TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
-		<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.14393.0" MaxVersionTested="10.0.14393.0" />
+		<TargetDeviceFamily Name="Windows.Desktop" MinVersion="10.0.20348.0" MaxVersionTested="10.0.22000.0" />
 	</Dependencies>
 
 	<Resources>
