@@ -9,7 +9,7 @@ int main()
 {
     winrt::init_apartment();
 
-    std::cout << "Hello World, PoC Version: " << versionString() << std::endl;
+    std::cout << "Hello World, **Visually IMproved** PoC Version: " << versionString() << std::endl;
     pause();
     return 0;
 }
