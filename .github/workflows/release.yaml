@@ -1,0 +1,82 @@
+name: Publish on release
+on:
+  push:
+    tags:
+      - '!latest' # Redundant, but just to be clear.
+      - '[0-9]+.[0-9]+.[0-9]+'
+jobs:
+  build-msix:
+    name: Build and release
+    runs-on: windows-latest
+    permissions:
+      contents: write
+    env:
+      tag: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set the Package Version
+        shell: powershell
+        run: |
+          # Set up the numeric version (used in the AppxManifest)
+          [Reflection.Assembly]::LoadWithPartialName("System.Xml.Linq")
+          $path = "$PWD\msix\Package.appxmanifest"
+          $doc = [System.Xml.Linq.XDocument]::Load($path)
+          $xName = [System.Xml.Linq.XName]::Get("{http://schemas.microsoft.com/appx/manifest/foundation/windows10}Identity")
+          $doc.Root.Element($xName).Attribute("Version").Value = "${env:tag}.0";
+          $doc.Save($path)
+
+          # Do the same with the app installer file
+          # with both the app installer file and main bundle versions the same as the git tag.
+          $path = "$PWD\msix\hello-app-installer.appinstaller"
+          $doc = [System.Xml.Linq.XDocument]::Load($path)
+          $ns = $doc.Root.Name.Namespace
+          $doc.Root.SetAttributeValue("Version", "${env:tag}.0")
+          $mainBundle = $doc.Root.Element($ns + "MainBundle")
+          if ($mainBundle) {
+            $mainBundle.SetAttributeValue("Version", "${env:tag}.0")
+            $mainBundle.SetAttributeValue("Uri", "https://github.com/CarlosNihelton/hello-app-installer/releases/download/${env:tag}/hello-app-installer_${env:tag}.msixbundle")
+          }
+          $doc.Save($path)
+
+      - name: Import the certificate
+        shell: powershell
+        run: |
+          # Install the certificate
+          New-Item -ItemType directory -Path certificate
+          Set-Content -Path certificate\certificate.txt -Value '${{ secrets.CERTIFICATE }}'
+          certutil -decode certificate\certificate.txt certificate\certificate.pfx
+
+          $pwd = ConvertTo-SecureString '${{ secrets.CERTIFICATE_PASSWORD }}' -AsPlainText -Force
+          Import-PfxCertificate -Password $pwd -CertStoreLocation Cert:LocalMachine\Trust -FilePath certificate\certificate.pfx
+          Import-PfxCertificate -Password $pwd -CertStoreLocation Cert:CurrentUser\My -FilePath certificate\certificate.pfx
+          Remove-Item certificate\ -Recurse
+
+      - uses: microsoft/setup-msbuild@v2
+      - name: Build Bundle
+        shell: powershell
+        run: |
+           msbuild .\happinst.sln -t:restore -p:RestorePackagesConfig=true
+           msbuild                                                                            `
+            .\happinst.sln                                                                    `
+            -target:Build                                                                     `
+            -maxCpuCount                                                                      `
+            -nodeReuse:false                                                                  `
+            -property:Configuration=Release                                                   `
+            -property:AppxBundle=Always                                                       `
+            -property:AppxBundlePlatforms="x64|ARM64"                                         `
+            -property:UapAppxPackageBuildMode=SideLoadOnly                                    `
+            -nologo                                                                           `
+            -verbosity:normal
+
+      - name: Create the GH Release
+        shell: powershell
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+           New-Item -type Directory to_upload
+           $app="hello-app-installer_${env:tag}"
+           Copy-Item "msix\hello-app-installer.appinstaller" .\to_upload\
+           Copy-Item msix\AppPackages\hello-app-installer_*_Test\*.cer ".\to_upload\$app.cer"
+           Copy-Item msix\AppPackages\hello-app-installer_*_Test\*.msixbundle ".\to_upload\$app.msixbundle"
+           gh release create "${env:tag}" --latest --title="${env:tag}" --generate-notes "to_upload\*"

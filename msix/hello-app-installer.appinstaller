@@ -2,13 +2,13 @@
 <AppInstaller
 	xmlns="http://schemas.microsoft.com/appx/appinstaller/2017/2"
 	xmlns:s21="http://schemas.microsoft.com/appx/appinstaller/2021"
-	Uri="https://carlosnihelton.github.io/hello-app-installer/releases/hello-app-installer.appinstaller"
+	Uri="https://github.com/CarlosNihelton/hello-app-installer/releases/latest/download/hello-app-installer.appinstaller"
 	Version="1.0.0.0">
 	<MainBundle
 		Name="hello-app-installer"
 		Version="1.0.0.0"
 		Publisher="CN=User"
-		Uri="https://carlosnihelton.github.io/hello-app-installer/releases/1.0.0/hello-app-installer_1.0.0.msixbundle" />
+		Uri="https://github.com/CarlosNihelton/hello-app-installer/releases/download/1.0.0/hello-app-installer_1.0.0.msixbundle" />
 	<Dependencies>
 		<Package
 		  Name="Microsoft.VCLibs.140.00.UWPDesktop"
