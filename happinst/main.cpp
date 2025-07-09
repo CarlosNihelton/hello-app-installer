@@ -9,7 +9,7 @@ int main()
 {
     winrt::init_apartment();
 
-    std::cout << "Hello World, **Visually IMproved** PoC Version: " << versionString() << std::endl;
+    std::cout << "Hello World, Welcome to the Whole New PoC Version: " << versionString() << '\n';
     OSVERSIONINFOA os{ 0 };
     os.dwOSVersionInfoSize = sizeof(OSVERSIONINFOA);
     GetVersionExA(&os);
