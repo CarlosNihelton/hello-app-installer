@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AppInstaller
 	xmlns="http://schemas.microsoft.com/appx/appinstaller/2017/2"
-	xmlns:s21="http://schemas.microsoft.com/appx/appinstaller/2021"
 	Uri="https://github.com/CarlosNihelton/hello-app-installer/releases/latest/download/hello-app-installer.appinstaller"
 	Version="1.0.0.0">
 	<MainBundle
@@ -24,10 +23,7 @@
 		  Uri="https://aka.ms/Microsoft.VCLibs.arm64.14.00.Desktop.appx" />
 	</Dependencies>
 	<UpdateSettings>
-		<OnLaunch HoursBetweenUpdateChecks="0"
-				  s21:UpdateBlocksActivation="true"
-				  s21:ShowPrompt="true" />
+		<OnLaunch HoursBetweenUpdateChecks="0" />
 		<AutomaticBackgroundTask />
-		<s21:ForceUpdateFromAnyVersion>true</s21:ForceUpdateFromAnyVersion>
 	</UpdateSettings>
 </AppInstaller>
